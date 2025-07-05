@@ -1,0 +1,187 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+/* Tema Escuro (padrão) */
+.theme-dark {
+  --bg-primary: #202124;
+  --bg-secondary: rgba(32, 33, 36, 0.95);
+  --text-primary: #e8eaed;
+  --text-secondary: #9aa0a6;
+  --border-color: #5f6368;
+  --hover-color: #e53935;
+  --card-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+/* Tema Claro */
+.theme-light {
+  --bg-primary: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  --bg-secondary: rgba(255,255,255,0.98);
+  --text-primary: #333;
+  --text-secondary: #666;
+  --border-color: #1976d2;
+  --hover-color: #e53935;
+  --card-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* Reset completo */
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg-primary) !important;
+}
+
+/* Estilos globais */
+body {
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  min-height: 100vh;
+  transition: all 0.3s ease;
+  position: relative;
+  background: var(--bg-primary) !important;
+  color: var(--text-primary);
+}
+
+/* Sobrescrever qualquer fundo do Bootstrap */
+.container-fluid,
+.container,
+.row,
+.col,
+.col-md-6,
+.col-md-12,
+.col-lg-4,
+.navbar-nav,
+.nav-item,
+.nav-link {
+  background: transparent !important;
+}
+
+/* Cards */
+.card {
+  background: var(--bg-secondary) !important;
+  box-shadow: var(--card-shadow) !important;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  position: relative;
+  z-index: 1;
+  border: 1px solid var(--border-color) !important;
+}
+
+/* Inputs */
+.form-control, .form-select {
+  background: #fff !important;
+  color: #333 !important;
+  border-color: var(--border-color) !important;
+}
+
+.form-control:focus, .form-select:focus {
+  border-color: var(--hover-color) !important;
+  box-shadow: 0 0 0 0.2rem rgba(229, 57, 53, 0.25) !important;
+  background: #fff !important;
+}
+
+/* Botões */
+.btn-primary {
+  background: linear-gradient(135deg, #1976d2 0%, #1565c0 100%) !important;
+  border: none !important;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, var(--hover-color) 0%, #d32f2f 100%) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(229, 57, 53, 0.3);
+}
+
+/* Alertas */
+.alert-primary {
+  background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%) !important;
+  border: 2px solid var(--border-color) !important;
+  color: var(--border-color) !important;
+}
+
+/* Títulos e labels */
+h1, h2, h3, label {
+  color: var(--text-primary);
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* Transições suaves */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Main content */
+.main-content {
+  padding-top: 100px;
+  position: relative;
+  z-index: 1;
+  background: transparent !important;
+}
+
+/* Garantir que o conteúdo principal não sobreponha a navbar */
+.container-fluid {
+  padding-top: 100px !important;
+  position: relative;
+  z-index: 1;
+  background: transparent !important;
+}
+
+/* Container principal */
+.container-fluid {
+  position: relative;
+  z-index: 1;
+  background: transparent !important;
+}
+
+/* Garantir que não há fundos cinza */
+#__nuxt,
+#__layout {
+  background: transparent !important;
+}
+
+/* Remover fundo cinza específico do Bootstrap */
+.bg-light,
+.bg-secondary,
+.bg-gray {
+  background: transparent !important;
+}
+
+/* Forçar fundo transparente em todos os elementos de layout */
+div[class*="col"],
+div[class*="row"],
+div[class*="container"] {
+  background: transparent !important;
+}
+
+/* Garantir que a navbar sempre fique no topo */
+.navbar {
+  z-index: 99999 !important;
+  position: fixed !important;
+  top: 0 !important;
+  width: 100% !important;
+  background: inherit !important;
+}
+
+/* Forçar fundo sólido na navbar */
+.navbar.theme-dark {
+  background: linear-gradient(135deg, #000 0%, #1a1a1a 100%) !important;
+  background-color: #000 !important;
+}
+
+.navbar.theme-light {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%) !important;
+  background-color: #f8f9fa !important;
+}
+
+/* Garantir que o conteúdo não sobreponha a navbar */
+body {
+  padding-top: 0 !important;
+}
+
+/* Ajustar scroll para não sobrepor a navbar */
+html {
+  scroll-padding-top: 120px;
+} 

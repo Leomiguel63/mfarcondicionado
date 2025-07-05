@@ -1,0 +1,87 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Cliente {
+  id        Int      @id @default(autoincrement())
+  
+  // Tipo de cliente
+  tipo      String   @default("fisica") // "fisica" ou "juridica"
+  
+  // Informações Pessoais (Pessoa Física)
+  nomeCompleto String?
+  cpf        String?
+  rg         String?
+  dataNascimento String?
+  genero     String?
+  estadoCivil String?
+  
+  // Informações Empresariais (Pessoa Jurídica)
+  razaoSocial String?
+  nomeFantasia String?
+  cnpj       String?
+  inscricaoEstadual String?
+  inscricaoMunicipal String?
+  responsavelLegal String?
+  cpfResponsavel String?
+  telefoneResponsavel String?
+  
+  // Informações de Contato
+  email     String?
+  telefoneFixo String?
+  celular   String?
+  
+  // Endereço
+  cep       String?
+  logradouro String?
+  numero    String?
+  complemento String?
+  bairro    String?
+  cidade    String?
+  estado    String?
+  pais      String? @default("Brasil")
+  
+  // Informações Fiscais
+  inscricaoEstadualFiscal String?
+  classificacaoFiscal String?
+  
+  // Campos legados para compatibilidade
+  nome      String?
+  telefone  String?
+  
+  // Informações Adicionais
+  observacoes String?
+  dataCadastro DateTime @default(now())
+  status    String? @default("ativo")
+  
+  orcamentos Orcamento[]
+}
+
+model Peca {
+  id         Int      @id @default(autoincrement())
+  nome       String
+  codigo     String?
+  quantidade Int
+  valor      Float
+}
+
+model Orcamento {
+  id          Int      @id @default(autoincrement())
+  clienteId   Int
+  cliente     Cliente  @relation(fields: [clienteId], references: [id])
+  data        DateTime @default(now())
+  valorTotal  Float    @default(0)
+  descricao   String?
+  observacoes String?
+  maoDeObra   Float    @default(0)
+  pecas       String?  // JSON string com array de peças
+  criadoEm    DateTime @default(now())
+}
